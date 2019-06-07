@@ -3,13 +3,50 @@ var express = require('express');
 var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
+const passport = require('passport');
+const session = require('express-session');
+const mongoose = require('mongoose');
 
-var indexRouter = require('./routes/index');
-var postsRouter = require('./routes/posts');
-let reviewsRouter = require('./routes/reviews');
+
+
+
+const User = require('./models/user');
 
 
 var app = express();
+
+//copypaste
+mongoose.connect('mongodb://localhost:27017/surf-shop', { useNewUrlParser: true });
+const db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function () {
+  console.log( 'we are connected!');
+});
+
+
+//copypaste
+app.use(session({
+  secret: 'la la la ',
+  resave: false,
+  saveUninitialized: true
+  
+}))
+
+
+//copypaste
+passport.use(User.createStrategy());
+passport.serializeUser(User.serializeUser());
+passport.deserializeUser(User.deserializeUser());
+
+
+
+//routes
+const indexRouter = require('./routes/index');
+const postsRouter = require('./routes/posts');
+const reviewsRouter = require('./routes/reviews');
+
+
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
