@@ -8,7 +8,7 @@ module.exports = {
         console.log('registering user');
 
         const newUser = new User({ 
-            
+
             username: req.body.username,
             email: req.body.email,
             image: req.body.image
@@ -28,6 +28,9 @@ module.exports = {
         });
         
 
+
+
+        
 
     }
 
