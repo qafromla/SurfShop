@@ -1,47 +1,46 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET users listing. /posts */
+ 
 router.get('/', function (req, res, next) {
-    res.json({ message: 'INDEX /posts' });
-  
+    res.send('INDEX  ');
 });
 
 router.get('/new', function (req, res, next) {
-    res.send('NEW /posts/new');
+    res.send('NEW  ');
 });
 
 router.post('/', function (req, res, next) {
-    res.send('CREATE /posts');
+    res.send('CREATE ');
 });
 
 router.get('/:id', function (req, res, next) {
-    res.send('SHOW /posts/:id');
+    res.send('SHOW  ');
 });
 
 router.get('/:id/edit', function (req, res, next) {
-    res.send('EDIT /posts/:id/edit');
+    res.send('EDIT  ');
 });
 
 router.put('/:id', function (req, res, next) {
-    res.send('UPDATE /posts/:id');
+    res.send('UPDATE  ');
 });
 
 router.delete('/:id', function (req, res, next) {
-    res.send('DELETE /posts/:id');
+    res.send('DELETE  ');
 });
 
 module.exports = router;
 
 /*==============
 
-GET index        /posts
-GET new          /posts/new
-POST create      /posts
-GET show         /posts/:id
-GET edit         /posts/:id/edit
-PUT update       /posts/:id
-DELETE destroy   /posts/:id
+GET index        /reviews
+GET new          /reviews/new
+POST create      /reviews
+GET show         /reviews/:id
+GET edit         /reviews/:id/edit
+PUT update       /reviews/:id
+DELETE destroy   /reviews/:id
 
 
 ===================*/
